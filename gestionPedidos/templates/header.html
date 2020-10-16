@@ -1,0 +1,118 @@
+<style></style>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Inicio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    {% load static%}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link href="{% static 'TiendaOnline/css/index.css' %}" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">ByMarket .</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span>
+            <i class="fas fa-bars"></i>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'todos' %}"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            &nbsp;
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'feedback' %}">Reviews</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'cart:pedidos' %}">Pedido ({{ cart_total_products }})</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacto' %}">Contactenos</a>
+            </li>
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{ user.username }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'salir' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+
+              {% endif %}
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container"></div>
+    </div>
+    <div class="container mt-3">
+      {% if messages %}
+      <div class="row mt-3 mb-3">
+        <div class="col-12">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    <div class="container">{% block content %} {% endblock %}</div>
+    <!-- header role="banner" -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

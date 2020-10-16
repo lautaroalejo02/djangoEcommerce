@@ -1,0 +1,39 @@
+"""TiendaOnline URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
+from gestionPedidos import views
+from django.conf import settings  # para mostrar imagenes con rutas
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('busqueda_productos/', views.busqueda_productos),
+    path('buscar/', views.buscar),
+    path('crearArticulo/', views.crearArticulo),
+    path('contacto/', views.contacto, name="contacto"),
+    path('', views.home, name="todos"),
+    path('index/', views.index),
+    path('accounts/', include("authentication.urls")),
+    path('feedback/', views.feedback, name="feedback"),
+    path('feedback/eliminar/<int:post_id>',
+         views.eliminar_post, name="eliminar_post"),
+    path('products/', include('products.urls')),
+    path('cart/', include('cart.urls')),
+    path('orders/', include('orders.urls')),
+
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

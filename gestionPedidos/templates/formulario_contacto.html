@@ -1,0 +1,22 @@
+{% extends "header.html" %} {% block content %} {% load crispy_forms_tags %}
+
+<body>
+  <h1>Contactenos</h1>
+  {% if form.errors %}
+  <h4 style="color: red">Por favor revisa este campo</h4>
+  {% endif %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+      {{form | crispy}}
+    </table>
+    <button
+      type="submit"
+      class="btn btn-xlarge btn-outline-dark"
+      value="Enviar"
+    >
+      Enviar
+    </button>
+  </form>
+</body>
+{% endblock %}

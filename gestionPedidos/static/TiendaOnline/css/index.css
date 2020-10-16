@@ -1,0 +1,69 @@
+.navbar {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-brand {
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+  color: black !important;
+}
+
+.navbar-toggler {
+  border: none !important;
+  outline: none !important;
+}
+
+.navbar-toggler i {
+  color: black;
+}
+
+.navbar-nav .nav-item .nav-link {
+  border: none !important;
+  outline: none !important;
+  color: black !important;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}
+
+.jumbotron {
+  margin-top: 10px;
+  background-image: url("https://images.unsplash.com/photo-1527567018838-584d3468eb85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=500&q=60");
+  background-size: cover;
+  height: 420px;
+  position: relative !important;
+}
+
+/* dekstop */
+@media (min-width: 992px) {
+  .navbar {
+    background: transparent;
+  }
+  .brand .navbar-brand {
+    font-size: 32px;
+    border: none !important;
+    outline: none !important;
+    font-family: "Roboto", sans-serif;
+    color: black !important;
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    color: black !important;
+  }
+  .nav-link {
+    margin-left: 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav-link::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after {
+    width: 50%;
+    transition: width 0.3s;
+  }
+}
